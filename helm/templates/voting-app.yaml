@@ -6,7 +6,7 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: production
+  project: staging
   source:
     path: helm
     repoURL: https://github.com/gonzaloacosta/voting-app.git
@@ -15,15 +15,15 @@ spec:
       values: |
         result:
           image:
-            tag: latest
-          ingressHost: result.192.168.64.6.nip.io
+            tag: staging 
+          ingressHost: result.staging.192.168.64.6.nip.io
         vote:
           image:
-            tag: latest 
-          ingressHost: vote.192.168.64.6.nip.io
+            tag: staging
+          ingressHost: vote.staging.192.168.64.6.nip.io
         worker:
           image:
-            tag: latest
+            tag: staging
       version: v3
   destination:
     namespace: production

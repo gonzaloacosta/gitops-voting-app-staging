@@ -1,4 +1,4 @@
 apiVersion: v1
-description: Production environment
+description: Stating environment
 name: voting-app
-version: "0.0.1"
+version: "0.0.2"
