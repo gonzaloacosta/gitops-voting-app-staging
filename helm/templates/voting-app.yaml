@@ -13,10 +13,17 @@ spec:
     targetRevision: HEAD
     helm:
       values: |
-        image:
-          tag: latest
-        ingress:
-          host: voting-app.192.168.64.6.nip.io
+        result:
+          image:
+            tag: latest
+          ingressHost: result.192.168.64.6.nip.io
+        vote:
+          image:
+            tag: latest 
+          ingressHost: vote.192.168.64.6.nip.io
+        worker:
+          image:
+            tag: latest
       version: v3
   destination:
     namespace: production
