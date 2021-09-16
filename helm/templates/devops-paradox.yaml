@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: voting-app
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: production
+  source:
+    path: helm
+    repoURL: https://github.com/gonzaloacosta/voting-app.git
+    targetRevision: HEAD
+    helm:
+      values: |
+        image:
+          tag: latest
+        ingress:
+          host: voting-app.192.168.64.6.nip.io
+      version: v3
+  destination:
+    namespace: production
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
